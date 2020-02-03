@@ -1,0 +1,2 @@
+# GenerateFunctionNameExtension
+生成函数名字的插件
