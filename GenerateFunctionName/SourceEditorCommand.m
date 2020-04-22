@@ -19,40 +19,41 @@
     
     NSMutableArray *lines = invocation.buffer.lines;
     NSString *seleteLineString = lines[position.line];
-    NSString *functionName = [[seleteLineString stringByReplacingOccurrencesOfString:@"[self" withString:@""] stringByReplacingOccurrencesOfString:@"];" withString:@""];
-    
-    NSMutableArray *array = [[functionName componentsSeparatedByString:@" "] mutableCopy];
-    [array removeObject:@""];
-    NSMutableArray *functionNameArray = @[].mutableCopy;
-    for (NSString *functionName in array) {
-        [functionNameArray addObject:[[functionName componentsSeparatedByString:@":"] firstObject]];
-    }
-    NSMutableString *mustring = @"".mutableCopy;
-    if ([functionName containsString:@":"]) {
-        mustring = @"- (void)".mutableCopy;
-        for (NSString *functionName in functionNameArray) {
-            [mustring appendFormat:@"%@:(<#Type#>)<#para#> ", functionName];
+    NSRange functionNameRange = [seleteLineString rangeOfString:@"(?<=\\[self ).*?(?=])" options:NSRegularExpressionSearch];
+    if (functionNameRange.location != NSNotFound) {
+        NSString *functionName = [seleteLineString substringWithRange:functionNameRange];
+        NSMutableArray *array = [[functionName componentsSeparatedByString:@" "] mutableCopy];
+        [array removeObject:@""];
+        NSMutableArray *functionNameArray = @[].mutableCopy;
+        for (NSString *functionName in array) {
+            [functionNameArray addObject:[[functionName componentsSeparatedByString:@":"] firstObject]];
         }
-        [mustring appendFormat:@"{\n\n}"];
+        NSMutableString *mustring = @"".mutableCopy;
+        if ([functionName containsString:@":"]) {
+            mustring = @"- (void)".mutableCopy;
+            for (NSString *functionName in functionNameArray) {
+                [mustring appendFormat:@"%@:(<#Type#>)<#para#> ", functionName];
+            }
+            [mustring appendFormat:@"{\n\n}"];
 
-    } else {
-        mustring = @"- (void)".mutableCopy;
-        for (NSString *functionName in functionNameArray) {
-            [mustring appendFormat:@"%@ ",[functionName stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+        } else {
+            mustring = @"- (void)".mutableCopy;
+            for (NSString *functionName in functionNameArray) {
+                [mustring appendFormat:@"%@ ",[functionName stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+            }
+            [mustring appendFormat:@"{\n\n}"];
+
         }
-        [mustring appendFormat:@"{\n\n}"];
-
-    }
+        NSInteger privateIndex = -1;
+        if ([invocation.buffer.lines containsObject:@"// MARK: - Private Method\n"]) {
+            privateIndex = [invocation.buffer.lines indexOfObject:@"// MARK: - Private Method\n"] + 1;
+        }
+        if (privateIndex == -1) {
+            privateIndex = invocation.buffer.lines.count - 1;
+        }
         
-    NSInteger privateIndex = -1;
-    if ([invocation.buffer.lines containsObject:@"// MARK: - Private Method\n"]) {
-        privateIndex = [invocation.buffer.lines indexOfObject:@"// MARK: - Private Method\n"] + 1;
+        [invocation.buffer.lines insertObject:mustring atIndex:privateIndex];
     }
-    if (privateIndex == -1) {
-        privateIndex = invocation.buffer.lines.count - 1;
-    }
-    
-    [invocation.buffer.lines insertObject:mustring atIndex:privateIndex];
     completionHandler(nil);
 }
 
