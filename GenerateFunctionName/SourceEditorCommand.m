@@ -46,12 +46,19 @@
         }
         NSInteger privateIndex = -1;
         if ([invocation.buffer.lines containsObject:@"// MARK: - Private Method\n"]) {
-            privateIndex = [invocation.buffer.lines indexOfObject:@"// MARK: - Private Method\n"] + 1;
+            NSInteger index = [invocation.buffer.lines indexOfObject:@"// MARK: - Private Method\n"];
+            NSInteger insertIndex = -1;
+            for (NSInteger i = index + 1; i < invocation.buffer.lines.count; i++) {
+                if ([invocation.buffer.lines[i] containsString:@"// MARK"]) {
+                    insertIndex = i - 1;
+                    break;
+                }
+            }
+            privateIndex = insertIndex;
         }
         if (privateIndex == -1) {
             privateIndex = invocation.buffer.lines.count - 1;
         }
-        
         [invocation.buffer.lines insertObject:mustring atIndex:privateIndex];
     }
     completionHandler(nil);
