@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F16D4362850AB830000076B /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F16D4352850AB830000076B /* XcodeKit.framework */; };
+		8F16D4372850AB830000076B /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8F16D4352850AB830000076B /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8F74890823D593460015513B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F74890723D593460015513B /* AppDelegate.m */; };
 		8F74890B23D593460015513B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F74890A23D593460015513B /* ViewController.m */; };
 		8F74890D23D593470015513B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F74890C23D593470015513B /* Assets.xcassets */; };
@@ -45,6 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8F16D4382850AB830000076B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8F16D4372850AB830000076B /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8F74894D23D5936E0015513B /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8F16D4352850AB830000076B /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		8F74890323D593460015513B /* GenerateFunction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenerateFunction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F74890623D593460015513B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8F74890723D593460015513B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -112,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FE82B1323D6E34E00C06A56 /* Cocoa.framework in Frameworks */,
+				8F16D4362850AB830000076B /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +193,7 @@
 		8F74893B23D5936D0015513B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F16D4352850AB830000076B /* XcodeKit.framework */,
 				8F74893C23D5936D0015513B /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -261,6 +277,7 @@
 				8FE82B0E23D6E34E00C06A56 /* Sources */,
 				8FE82B0F23D6E34E00C06A56 /* Frameworks */,
 				8FE82B1023D6E34E00C06A56 /* Resources */,
+				8F16D4382850AB830000076B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -534,7 +551,7 @@
 				CODE_SIGN_ENTITLEMENTS = GenerateFunction/GenerateFunction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = GenerateFunction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,7 +571,7 @@
 				CODE_SIGN_ENTITLEMENTS = GenerateFunction/GenerateFunction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = GenerateFunction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -573,7 +590,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				INFOPLIST_FILE = GenerateFunctionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -593,7 +610,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				INFOPLIST_FILE = GenerateFunctionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,7 +629,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				INFOPLIST_FILE = GenerateFunctionUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,7 +647,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				INFOPLIST_FILE = GenerateFunctionUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -649,7 +666,7 @@
 				CODE_SIGN_ENTITLEMENTS = GenerateFunctionName/GenerateFunctionName.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = GenerateFunctionName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -669,7 +686,7 @@
 				CODE_SIGN_ENTITLEMENTS = GenerateFunctionName/GenerateFunctionName.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = P8HT367G9J;
+				DEVELOPMENT_TEAM = YN897HLPBK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = GenerateFunctionName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
